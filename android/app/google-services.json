@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "924564567221",
+    "firebase_url": "https://my-blog-app-47aa1.firebaseio.com",
+    "project_id": "my-blog-app-47aa1",
+    "storage_bucket": "my-blog-app-47aa1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:924564567221:android:64cd074b955de9e5",
+        "android_client_info": {
+          "package_name": "com.capecastgroup.blog_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "924564567221-k0qp7epjou8fljpec7gjiihr28er2ja7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5O1V4i6hkd4_c3MVIGWLbdYSt1KV-H7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "924564567221-k0qp7epjou8fljpec7gjiihr28er2ja7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

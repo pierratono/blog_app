@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:async/async.dart';
+import 'dart:async';
 
 class Home extends StatefulWidget {
   @override
@@ -6,6 +9,25 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+  StreamSubscription<QuerySnapshot>subscription;
+
+  List<DocumentSnapshot>snapshot;
+
+  CollectionReference collectionReference = Firestore.instance.collection("Post");
+  
+  @override
+  void initState() {
+    super.initState();
+    
+    subscription=collectionReference.snapshots().listen((datasnapshot){
+      setState(() {
+        snapshot=datasnapshot.documents;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

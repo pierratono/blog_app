@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:async/async.dart';
 import 'dart:async';
+import 'PostDetailsPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -27,12 +28,16 @@ class _HomeState extends State<Home> {
     });
   }
 
+  passData(DocumentSnapshot snap){
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>PostDetails(snapshot: snap,)));
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Flutter Blog App"),
+        title: new Text("My Blog App"),
         backgroundColor: Colors.redAccent,
         actions: <Widget>[
           new IconButton(
@@ -84,6 +89,59 @@ class _HomeState extends State<Home> {
 
           ],
         ),
+      ),
+      body: new ListView.builder(
+        itemCount: snapshot.length,
+        itemBuilder: (context,index){
+          return new Card(
+            elevation: 10.0,
+            margin: EdgeInsets.all(10.0),
+            child: new Container(
+              padding: EdgeInsets.all(10.0),
+              child: new Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  new CircleAvatar(
+                    child: new Text(snapshot[index].data["title"][0]),
+                    backgroundColor: Colors.redAccent,
+                    foregroundColor: Colors.white,
+
+
+
+                  ),
+
+                  new SizedBox(width: 10.0,),
+                  new Container(
+                    width: 210.0,
+                    child: new Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+
+                        new InkWell(
+
+                        child:  new Text(snapshot[index].data["title"],
+                          style: TextStyle(fontSize: 22.0,color: Colors.green),
+                          maxLines: 1,
+                        ),
+                          onTap: (){
+                          passData(snapshot[index]);
+                          },
+                    ),
+
+
+
+                        new SizedBox(height: 5.0,),
+
+                        new Text(snapshot[index].data["content"],
+                        maxLines: 2,)
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        }
       ),
     );
   }

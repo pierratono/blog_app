@@ -5,7 +5,7 @@ class PostDetails extends StatefulWidget {
 
   DocumentSnapshot snapshot;
 
-  PostDetails({this.snapshot})
+  PostDetails({this.snapshot});
 
   @override
   _PostDetailsState createState() => _PostDetailsState();
